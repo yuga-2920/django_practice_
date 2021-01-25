@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Amazonスクレイピング</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    csvファイル名：<input type="search" id="csv_file" value="csv_easy_20210102125044.csv"/><br />
+    ID名：<input type="search" id="id"/><br />
+    パスワード：<input type="search" id="password"/><br />
+    <button id="button">実行</button><br />
+    <b><textarea id="textarea" rows="20" cols="40"></textarea></b>
+
+    <script type="text/javascript" src="./eel.js"></script>
+    <script>
+      button.addEventListener("click", () => {
+        let csv_file = document.getElementById("csv_file").value.trim();
+        let id = document.getElementById("id").value.trim();
+        let password = document.getElementById("password");
+
+        if (
+          !csv_file ||
+          !id ||
+          !password
+        ) {
+          alert("入力していない項目があります");
+        } else {
+          document.getElementById("textarea").value = "実行しました\n\n";
+          eel.main();
+        }
+      });
+
+      eel.expose(csv_file);
+      function csv_file() {
+        return document.getElementById("csv_file").value.trim();
+      }
+
+      eel.expose(id);
+      function id() {
+        return document.getElementById("id").value.trim();
+      }
+
+      eel.expose(password);
+      function password() {
+        return document.getElementById("password").value.trim();
+      }
+
+      eel.expose(view_log_js);
+      function view_log_js(text) {
+        document.getElementById("textarea").value += text + "\n";
+      }
+    </script>
+  </body>
+</html>
