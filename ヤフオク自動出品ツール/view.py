@@ -17,9 +17,9 @@ def main():
         eel.view_log_js("\nその名前のcsvファイルは存在しません")
         sys.exit(0)
 
-    # except Exception:
-    #     eel.view_log_js("\nエラーが生じました。この画面を閉じ最初からやり直してください")
-    #     sys.exit(0)
+    except Exception:
+        eel.view_log_js("\nエラーが生じました。この画面を閉じ最初からやり直してください")
+        sys.exit(0)
 
 desktop.start(app_name,end_point,size)
 sys.exit(0)
